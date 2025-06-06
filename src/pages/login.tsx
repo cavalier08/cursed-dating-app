@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+
 export default function Login() {
   return (
     <div>
@@ -8,7 +9,7 @@ export default function Login() {
         <p>Password:</p>
         <input type="text"></input>
         <Link
-            href={"/pages/matches.tsx"}>
+            href={"/matches"}>
             <p>Log In</p>
         </Link>
     </div>
