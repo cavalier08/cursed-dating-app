@@ -7,7 +7,7 @@ export default function Login() {
     <div className="">
       <h1 className="flex justify-center items-center text-3xl m-10"
       >the-cursed-dating-app</h1>
-      <div >
+      <div className="">
         <LoginFields fieldName="Password"></LoginFields>
         <LoginFields fieldName="Username"></LoginFields>
         <Link
