@@ -11,14 +11,15 @@ export default function Login() {
       <div className="p-4 bg-slate-800">
         <LoginFields fieldName="Password"></LoginFields>
         <LoginFields fieldName="Username"></LoginFields>
-        <div className="w-full">
+
+        <div className="w-full ">
           <Link 
               href={"/matches"}>
-              <button className="w-1/4 bg-slate-700 hover:bg-slate-500 rounded-sm p-1 ">Log In</button>
+              <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1 ">Log In</button>
           </Link>
           <Link 
               href={"/matches"}>
-              <button className="w-1/4 bg-blue-900 hover:bg-slate-500 rounded-sm p-1">Sign Up</button>
+              <button className="w-1/2 bg-blue-900 hover:bg-slate-500 rounded-sm p-1">Sign Up</button>
           </Link>
         </div>
         
@@ -30,7 +31,7 @@ export default function Login() {
 
 function LoginFields({fieldName}: {fieldName: string}) {
   return(
-    <div className="w-1/2 mb-4">
+    <div className=" mb-4">
       <label>{fieldName}:</label>
       <input className="text-gray-300 p-2 rounded-sm bg-slate-700 hover:bg-slate-600 w-full" type="text"></input>
     </div>
