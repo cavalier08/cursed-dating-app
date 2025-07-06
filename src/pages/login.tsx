@@ -9,8 +9,8 @@ export default function Login() {
       >the-cursed-dating-app</h1>
       
       <div className="p-4 bg-slate-800">
-        <LoginFields fieldName="Password"></LoginFields>
         <LoginFields fieldName="Username"></LoginFields>
+        <LoginFields fieldName="Password"></LoginFields>
 
         <div className="w-full ">
           <Link 
