@@ -1,5 +1,6 @@
 import Link from "next/link";
 import '../app/globals.css';
+import SwipeProfile from "../components/SwipeProfile";
 
 
 export default function Matches() {
@@ -14,6 +15,7 @@ export default function Matches() {
                 <p>See your matches</p>
             </Link>
             <h2>[swiping screen]</h2>
+            <SwipeProfile></SwipeProfile>
         </div>
     );
 }

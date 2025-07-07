@@ -1,4 +1,5 @@
-export default function Profile({ data = { name: "", username: "", yourRank: -1, theirRank: -1 } }) {
+
+export default function UserProfile({ data = { name: "", username: "", yourRank: -1, theirRank: -1 } }) {
     const yourRankExists = (data.yourRank != -1);
     const theirRankExists = (data.theirRank != -1);
     return (

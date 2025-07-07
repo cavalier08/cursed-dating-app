@@ -1,7 +1,7 @@
 import Link from "next/link";
 import '../app/globals.css';
 import { useState, useEffect } from 'react';
-import Profile from '../components/profile';
+import UserProfile from "../components/UserProfile";
 
 export default function Matches() {
     // Set state to be an array of JSON objects, each one representing a user you have ranked / who has ranked you
@@ -38,7 +38,7 @@ export default function Matches() {
             <h2>Your matches:</h2>
             <div id="profiles">
                 {results.map((match, index) => (
-                    <Profile key={index} data={match} />
+                    <UserProfile key={index} data={match} />
                 ))}
             </div>
         </div>
