@@ -5,8 +5,12 @@ import '../app/globals.css';
 export default function Login() {
   return (
     <div className="place-items-center grid h-screen">
-      <h1 className="flex justify-center items-center text-3xl m-10"
+      <div className="flex justify-center items-center ">
+      <h1 className="text-3xl"
       >the-cursed-dating-app</h1>
+
+      </div>
+      
       
       <div className="p-4 bg-slate-800">
         <LoginFields fieldName="Username"></LoginFields>
