@@ -22,7 +22,7 @@ export default function Login() {
               <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1 ">Log In</button>
           </Link>
           <Link 
-              href={"/matches"}>
+              href={"/signup"}>
               <button className="w-1/2 bg-blue-900 hover:bg-slate-500 rounded-sm p-1">Sign Up</button>
           </Link>
         </div>
