@@ -7,3 +7,13 @@ export async function fetchFromDjango(endpoint: string) {
     }
     return response.json();
 }
+
+export async function postToDjango(endpoint: string, body: {}) {
+    const response = await fetch("${BASE_URL})${endpoint}", {
+        method: "POST",
+        body: JSON.stringify(body)
+    });
+    if (!response.ok) {
+        throw new Error("Network response was not ok");
+    }
+}

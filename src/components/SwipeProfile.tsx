@@ -1,14 +1,18 @@
 import Image from 'next/image';
+import { postToDjango } from "@/services/api";
+
 // profile of users to swipe on
 export default function SwipeProfile() {
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-        
-
+        const body = {
+            rating: parseInt(event.currentTarget.value)
+        }
+        //postToDjango('', body);
     }
 
     function SwipeButton({rating}: {rating: number}) {
         return (
-           <button onClick={handleClick} className="bg-slate-600 w-20 h-10 hover:bg-pink-300">
+           <button onClick={handleClick} className="bg-slate-600 w-20 h-10 hover:bg-pink-300" value={rating}>
             {rating}
     
            </button>

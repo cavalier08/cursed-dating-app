@@ -22,12 +22,13 @@ export default function Matches() {
     let users: User[] = [defaultUser];
     const [results, setResults] = useState(users);
 
-    const URL = '';
     // Request matches from API immediately upon loading
     useEffect(() => {
+        /* Don't uncomment this until API is set up
+        const URL = '';
         fetchFromDjango(URL).then((response) => {
             setResults(response);
-        });
+        });*/
     }, []);
 
     return (
