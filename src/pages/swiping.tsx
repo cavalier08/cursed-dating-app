@@ -15,7 +15,9 @@ export default function Matches() {
                 <p>See your matches</p>
             </Link>
             <h2>[swiping screen]</h2>
-            <SwipeProfile></SwipeProfile>
+            <div className="w-full flex justify-center">
+                <SwipeProfile />
+            </div>
         </div>
     );
 }
