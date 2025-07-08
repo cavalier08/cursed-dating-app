@@ -1,7 +1,8 @@
 import Link from "next/link";
 import '../app/globals.css';
 import { useState, useEffect } from 'react';
-import UserProfile from "../components/UserProfile";
+import UserProfile from "@/components/UserProfile";
+import { fetchFromDjango } from "@/services/api";
 
 export interface User {
     name: string,
@@ -21,16 +22,12 @@ export default function Matches() {
     let users: User[] = [defaultUser];
     const [results, setResults] = useState(users);
 
-    // Request matches from API
     const URL = '';
-    async function getMatches() {
-        const response = await fetch(URL);
-        const body = await response.json();
-        setResults(body);
-    }
-    // Send request immediately upon loading
+    // Request matches from API immediately upon loading
     useEffect(() => {
-        //getMatches();
+        fetchFromDjango(URL).then((response) => {
+            setResults(response);
+        });
     }, []);
 
     return (
