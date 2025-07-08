@@ -1,4 +1,4 @@
-import { User } from '../pages/matches copy';
+import { User } from '../pages/matches';
 
 interface PropsType {
     data: User
