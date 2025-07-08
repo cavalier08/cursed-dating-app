@@ -3,15 +3,23 @@ import '../app/globals.css';
 import { useState, useEffect } from 'react';
 import UserProfile from "../components/UserProfile";
 
+export interface User {
+    name: string,
+    username: string,
+    yourRank: number,
+    theirRank: number
+}
+
 export default function Matches() {
     // Set state to be an array of JSON objects, each one representing a user you have ranked / who has ranked you
-    const defaultUser = {  // this is just to set the type of the state
-        name: "",
-        username: "",
-        yourRank: -1,
-        theirRank: -1
+    const defaultUser = {  // default user, for testing UI only
+        name: "Bob",
+        username: "bobby",
+        yourRank: 6,
+        theirRank: 6
     };
-    const [results, setResults] = useState([defaultUser]);
+    let users: User[] = [defaultUser];
+    const [results, setResults] = useState(users);
 
     // Request matches from API
     const URL = '';
@@ -22,7 +30,7 @@ export default function Matches() {
     }
     // Send request immediately upon loading
     useEffect(() => {
-        getMatches();
+        //getMatches();
     }, []);
 
     return (
