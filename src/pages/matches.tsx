@@ -1,7 +1,7 @@
 import Link from "next/link";
 import '../app/globals.css';
 import { useState, useEffect } from 'react';
-import UserProfile from "../components/userProfile";
+import UserProfile from "../components/UserProfile";
 
 export default function Matches() {
     // Set state to be an array of JSON objects, each one representing a user you have ranked / who has ranked you

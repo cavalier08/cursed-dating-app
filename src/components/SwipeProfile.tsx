@@ -17,7 +17,6 @@ export default function SwipeProfile() {
 
     const pfpURL = "/grumpy_lucky.png";
     const pfpStyle = {
-        display: "flex"
 
     }
 
