@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:8000';
 
 export async function fetchFromDjango(endpoint: string) {
-    const response = await fetch("${BASE_URL})${endpoint}");
+    const response = await fetch(`${BASE_URL}/${endpoint}`);
     if (!response.ok) {
         throw new Error("Network response was not ok");
     }
@@ -9,7 +9,7 @@ export async function fetchFromDjango(endpoint: string) {
 }
 
 export async function postToDjango(endpoint: string, body: {}) {
-    const response = await fetch("${BASE_URL})${endpoint}", {
+    const response = await fetch(`${BASE_URL}/${endpoint}`, {
         method: "POST",
         body: JSON.stringify(body)
     });
