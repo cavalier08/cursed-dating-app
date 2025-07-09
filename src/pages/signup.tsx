@@ -1,13 +1,16 @@
-import Link from "next/link";
 import '../app/globals.css';
+import Link from "next/link";
+import TextInput from "@/components/TextInput";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
+import { postToDjango } from "@/services/api";
 
 interface User {
     name: string,
     username: string,
     password: string
 }
+import { LoginResponse } from '@/pages/login';
 
 export default function Signup() {
     const [user, setUser] = useState<User>({
@@ -18,7 +21,7 @@ export default function Signup() {
     const Router = useRouter();
 
     // Event handler for signup button
-    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = async () => {
         // Ensure all fields are present
         if (user.name == "") {
             alert("Please enter your name!");
@@ -30,10 +33,18 @@ export default function Signup() {
             alert("Please enter a password!");
             return;
         }
+        // Send POST request containing username / password to API
+      //const response: LoginResponse = await postToDjango('/signup', user);
+      const response: LoginResponse = {success: true};   // API has not been set up yet!
 
-        // Send POST request containing ranking to API
-        const body = user;
-        //postToDjango('', body);
+        // If successful, redirect user to matches.tsx page
+        if (response.success) {
+            // Save username to sessionStorage upon successful login
+            window.sessionStorage.setItem('username', user.username);
+            Router.push('/matches');
+        } else {
+            alert(response.error);
+        }
 
         // If successful, redirect user to matches.tsx page
         Router.push('/matches');
@@ -45,7 +56,6 @@ export default function Signup() {
             ...prev,
             [event.target.name]: event.target.value,
         }));
-        console.log(user);
     };
 
   return (
@@ -56,26 +66,20 @@ export default function Signup() {
       
       
       <div className="p-4 bg-slate-800">
-        <InputField fieldName="Your Name" inputName="name" onChange={handleInputChange}></InputField>
-        <InputField fieldName="Username" inputName="username" onChange={handleInputChange}></InputField>
-        <InputField fieldName="Password" inputName="password" onChange={handleInputChange}></InputField>
+        <TextInput fieldName="Your Name" inputName="name" onChange={handleInputChange}></TextInput>
+        <TextInput fieldName="Username" inputName="username" onChange={handleInputChange}></TextInput>
+        <TextInput fieldName="Password" inputName="password" onChange={handleInputChange}></TextInput>
 
         <div className="w-full ">
-          <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1" onClick={handleClick}>Sign Up</button>
+            <button className="w-1/2 bg-blue-900 hover:bg-slate-500 rounded-sm p-1"
+                onClick={handleClick}>Sign Up</button>
+            <Link 
+                href={"/"}>
+                <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1">Log In</button>
+            </Link>
         </div>
         
       </div>
-    </div>
-  );
-}
-
-function InputField({fieldName, inputName, onChange}:
-    {fieldName: string, inputName: string, onChange: React.ChangeEventHandler}) {
-  return(
-    <div className=" mb-4">
-      <label>{fieldName}:</label>
-      <input className="text-gray-300 p-2 rounded-sm bg-slate-700 hover:bg-slate-600 w-full"
-        type="text" name={inputName} onChange={onChange}></input>
     </div>
   );
 }
