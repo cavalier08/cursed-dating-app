@@ -6,7 +6,7 @@ import Footer from "@/components/footer"
 import TextInput from "@/components/TextInput";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { postToDjango } from "@/services/api";
+import { fetchFromDjango, postToDjango } from "@/services/api";
 
 interface User {
     username: string,
@@ -28,8 +28,9 @@ export default function Login() {
     // Event handler for LoginButton, called upon login
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = async () => {
       // Send POST request containing username / password to API
-      //const response: LoginResponse = await postToDjango('/login', user);
-      const response: LoginResponse = {success: true};   // API has not been set up yet!
+      const res = await fetchFromDjango('admin');
+      console.log(res);
+      const response: LoginResponse = await postToDjango('login', user);
 
       // If successful, redirect user to matches.tsx page
       if (response.success) {
@@ -58,7 +59,7 @@ export default function Login() {
       
       <div className="p-4 bg-slate-800">
         <TextInput fieldName="Username" inputName="username" onChange={handleInputChange}></TextInput>
-        <TextInput fieldName="Password" inputName="username" onChange={handleInputChange}></TextInput>
+        <TextInput fieldName="Password" inputName="password" onChange={handleInputChange}></TextInput>
 
         <div className="w-full ">
           <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1 "

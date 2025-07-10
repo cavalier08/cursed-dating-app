@@ -34,8 +34,7 @@ export default function Signup() {
             return;
         }
         // Send POST request containing username / password to API
-      //const response: LoginResponse = await postToDjango('/signup', user);
-      const response: LoginResponse = {success: true};   // API has not been set up yet!
+        const response: LoginResponse = await postToDjango('signup', user);
 
         // If successful, redirect user to matches.tsx page
         if (response.success) {
@@ -45,9 +44,6 @@ export default function Signup() {
         } else {
             alert(response.error);
         }
-
-        // If successful, redirect user to matches.tsx page
-        Router.push('/matches');
     }
 
     // Event handler for InputFields
