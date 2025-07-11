@@ -5,41 +5,48 @@ import { fetchFromDjango, postToDjango } from "@/services/api";
 interface User {
     name: string,
     username: string,
-    pfpURL: string
+    pfpURL?: string
 }
 
 // profile of users to swipe on
 export default function SwipeProfile() {
     const defaultUser: User = {
-        name: "Lucky",
-        username: "lucky",
+        name: '',
+        username: '',
         pfpURL: "/grumpy_lucky.png"
     }
     const [user, setUser] = useState(defaultUser);
 
     // Gets a random user from the Django API and sets as current user
     const getRandomUser = () => {
-        fetchFromDjango('randomUser').then((response) => {
-            setUser(response);
+        postToDjango('random', { username: window.sessionStorage["username"] })
+        .then((response) => {
+            if (!response.success) {
+                alert(response.error);
+                return;
+            }
+            setUser({
+                name: response.name,
+                username: response.username
+            });
         });
     }
 
     // Request a random user from API immediately upon loading
     useEffect(() => {
-        /* Don't uncomment this until API is set up
         getRandomUser();
-        */
     }, []);
 
     // Event handler for SwipeButtons
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
         const body = {
-            username: user.username,
+            thisUsername: window.sessionStorage["username"],
+            otherUsername: user.username,
             rating: parseInt(event.currentTarget.value)
         }
         console.log(body);
         // Send POST request containing ranking to API
-        //postToDjango('', body);
+        postToDjango('rank', body);
         //getRandomUser();
     }
 
@@ -59,13 +66,13 @@ export default function SwipeProfile() {
         
         <div className="bg-slate-800 w-80 h-90 absolute bottom-0">
             <p className="text-lg p-2">{user.name}</p>
-            <Image 
+            {user.pfpURL && <Image 
                 src={user.pfpURL}
                 alt="pfp of person"
                 width={200}
                 height={200}
-                style={pfpStyle} />
-
+                style={pfpStyle} />}
+            
             <div className="flex wrap absolute bottom-0 w-100">
             <SwipeButton rating={1} />
             <SwipeButton rating={2} />
