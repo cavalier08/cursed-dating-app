@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = process.env.BACKEND_URL;
 
 export async function fetchFromDjango(endpoint: string) {
     const response = await fetch(`${BASE_URL}/${endpoint}/`, {
