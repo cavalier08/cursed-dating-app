@@ -12,6 +12,7 @@ export async function fetchFromDjango(endpoint: string) {
         throw new Error("Network response was not ok");
     }
     console.log("hello");
+    console.log("world");
     return response.json();
 }
 
