@@ -11,6 +11,7 @@ export async function fetchFromDjango(endpoint: string) {
     if (!response.ok) {
         throw new Error("Network response was not ok");
     }
+    console.log("hello");
     return response.json();
 }
 
