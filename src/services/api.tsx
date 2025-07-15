@@ -11,8 +11,6 @@ export async function fetchFromDjango(endpoint: string) {
     if (!response.ok) {
         throw new Error("Network response was not ok");
     }
-    console.log("hello");
-    console.log("world");
     return response.json();
 }
 
@@ -28,5 +26,4 @@ export async function postToDjango(endpoint: string, body: {}) {
         throw new Error("Network response was not ok");
     }
     return response.json();
-    // testing branch shenanigans
 }
