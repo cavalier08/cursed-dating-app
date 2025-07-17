@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { fetchFromDjango, postToDjango } from "@/services/api";
+import { fetchFromDjango, postToDjango } from "@/routes/api";
 
 interface User {
     name: string,

@@ -2,7 +2,7 @@ import Link from "next/link";
 import '../app/globals.css';
 import { useState, useEffect } from 'react';
 import UserProfile from "@/components/UserProfile";
-import { fetchFromDjango } from "@/services/api";
+import { fetchFromDjango } from "@/routes/api";
 
 export interface User {
     name: string,

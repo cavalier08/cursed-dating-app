@@ -3,7 +3,8 @@ import '../app/globals.css';
 import TextInput from "@/components/TextInput";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { fetchFromDjango, postToDjango } from "@/services/api";
+import { fetchFromDjango, postToDjango } from "@/routes/api";
+import OAuth from '../components/OAuth';
 
 interface User {
     name?: string,
@@ -65,6 +66,7 @@ export default function LoginForm({signup}: {signup: boolean}) {
         <TextInput fieldName="Username" inputName="username" onChange={handleInputChange}></TextInput>
         <TextInput fieldName="Password" inputName="password" onChange={handleInputChange}></TextInput>
 
+
         {!signup && 
         <div className="w-full ">
             <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1 "
@@ -72,7 +74,11 @@ export default function LoginForm({signup}: {signup: boolean}) {
             <Link href={"/signup"}>
                 <button className="w-1/2 bg-blue-900 hover:bg-slate-500 rounded-sm p-1">Sign Up</button>
             </Link>
-        </div>}
+            <OAuth></OAuth>
+
+        </div>
+        
+        }
         {signup && 
         <div className="w-full ">
             <button className="w-1/2 bg-slate-700 hover:bg-slate-500 rounded-sm p-1 "
