@@ -1,11 +1,13 @@
 import Link from "next/link";
 import '../app/globals.css';
 import SwipeProfile from "../components/SwipeProfile";
+import VerifyGoogleLogin from "@/components/VerifyGoogleLogin";
 
 
 export default function Matches() {
     return (
         <div>
+            <VerifyGoogleLogin />
             <Link
                 href={"/settings"}>
                 <p>User settings</p>

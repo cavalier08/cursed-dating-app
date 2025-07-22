@@ -19,6 +19,7 @@ export default function SwipeProfile() {
 
     // Gets a random user from the Django API and sets as current user
     const getRandomUser = () => {
+        console.log("hi");
         postToDjango('random', { username: window.sessionStorage["username"] })
         .then((response) => {
             if (!response.success) {
