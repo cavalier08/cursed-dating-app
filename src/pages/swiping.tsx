@@ -4,7 +4,7 @@ import SwipeProfile from "../components/SwipeProfile";
 import VerifyGoogleLogin from "@/components/VerifyGoogleLogin";
 
 
-export default function Matches() {
+export default function Swiping() {
     return (
         <div>
             <VerifyGoogleLogin />

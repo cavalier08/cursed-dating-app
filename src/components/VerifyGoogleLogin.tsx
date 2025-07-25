@@ -9,40 +9,35 @@ export default function VerifyGoogleLogin() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = Cookies.get('token');
+        const fetchToken = async () => {
+            console.log("hello");
 
-        // if token invalid redirects to login page
-        if (!token) {
-            router.push('\login');
-            return;
-        }
-
-        const googleResponse = async () => {
             try {
-                const response = await axios.get('/api/auth/verify', {
-                    headers: {
-                        Authorization: `Headers: {token}`,
-                    },
+                const response = await axios.get('http://localhost:8000/api/get-session', {
+                    withCredentials: true,
                 })
-               setUser(response.data);
+
+                Cookies.set('token', response.data.token);
+                setUser(response.data);
             } catch {
-                Cookies.remove('token');
+                console.log('session failed');
                 router.push('/login');
             }
         }
-
+        
+        fetchToken();
     }, [router])
 
+    /*
     if (!user) {
         useEffect(() => {
             router.push('/login');
         }, [router])
-        return;
     }
-
+*/
     return (
         <div>
-            <h1>Welcome {user}</h1>
+            <h1>Welcome!</h1>
         </div>
     )
 }
