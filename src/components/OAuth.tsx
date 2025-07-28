@@ -1,15 +1,14 @@
-import { useRouter, useSearchParams } from 'next/navigation';
 
 
 const googleRedirect = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_REDIRECT || '';
 
 export default function OAuth() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
 
     const handleLogin = (): void => {
         window.location.href = googleRedirect;
     }
+
+    
 
     return (
         <div>
