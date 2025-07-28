@@ -1,8 +1,8 @@
-import Link from "next/link";
 import '../app/globals.css';
 import { useState, useEffect } from 'react';
 import UserProfile from "@/components/UserProfile";
 import { fetchFromDjango } from "@/routes/api";
+import NavBar from "../components/NavBar"
 
 export interface User {
     name: string,
@@ -31,9 +31,8 @@ export default function Matches() {
         });*/
     }, []);
 
-    return (
-        <div>
-            <Link
+    /*
+    <Link
                 href={"/settings"}>
                 <p>User settings</p>
             </Link>
@@ -42,6 +41,13 @@ export default function Matches() {
                 <p>Find potential matches!</p>
             </Link>
             <h2>Your matches:</h2>
+            */
+
+    return (
+        <div>
+            <NavBar href1="settings" page1="Settings" href2="swiping" page2="Swiping" title="Matches"/>
+
+            
             <div id="profiles">
                 {results.map((match, index) => (
                     <UserProfile key={index} data={match} />
