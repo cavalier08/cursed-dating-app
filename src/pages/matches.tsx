@@ -9,6 +9,7 @@ export interface User {
     username: string,
     yourRank: number,
     theirRank: number
+    theirPfP?: string,
 }
 
 export default function Matches() {
@@ -17,7 +18,8 @@ export default function Matches() {
         name: "Bob",
         username: "bobby",
         yourRank: 6,
-        theirRank: 6
+        theirRank: 6,
+        theirPfP: '/grumpy_lucky.png',
     };
     let users: User[] = [defaultUser];
     const [results, setResults] = useState(users);
@@ -31,24 +33,12 @@ export default function Matches() {
         });*/
     }, []);
 
-    /*
-    <Link
-                href={"/settings"}>
-                <p>User settings</p>
-            </Link>
-            <Link
-                href={"/swiping"}>
-                <p>Find potential matches!</p>
-            </Link>
-            <h2>Your matches:</h2>
-            */
-
     return (
         <div>
             <NavBar href1="settings" page1="Settings" href2="swiping" page2="Swiping" title="Matches"/>
 
             
-            <div id="profiles">
+            <div className="" id="profiles">
                 {results.map((match, index) => (
                     <UserProfile key={index} data={match} />
                 ))}
