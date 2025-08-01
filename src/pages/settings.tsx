@@ -1,19 +1,13 @@
 import Link from "next/link";
 import '../app/globals.css';
+import NavBar from '../components/NavBar';
 
 
 export default function Matches() {
     return (
         <div>
-            <Link
-                href={"/matches"}>
-                <p>Matches</p>
-            </Link>
-            <Link
-                href={"/swiping"}>
-                <p>Swiping page</p>
-            </Link>
-            <h3>Settings</h3>
+            <NavBar href1="matches" page1="Matches" href2="swiping" page2="Swiping" title="settings"/>
+            
         </div>
     );
 }
