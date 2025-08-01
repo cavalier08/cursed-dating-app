@@ -11,7 +11,7 @@ export default function UserProfile({data}: {data: User}) {
         borderRadius: '5px',
     }
     return (
-        <div className="m-3 p-5 bg-gray-900 w-100 text-center rounded-xl hover:shadow-md hover:shadow-gray-700">
+        <div className="p-5 m-auto md:m-3 bg-gray-900 w-100 text-center rounded-xl hover:shadow-md hover:shadow-gray-700">
             <h3 className="text-xl m-4">{ data.name }</h3>
             {data.theirPfP != null && 
             <Image

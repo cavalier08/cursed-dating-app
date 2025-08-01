@@ -38,7 +38,7 @@ export default function Matches() {
             <NavBar href1="settings" page1="Settings" href2="swiping" page2="Swiping" title="Matches"/>
 
             
-            <div className="" id="profiles">
+            <div className="md:flex w-17/20 bg-slate-800 m-auto mt-20" id="profiles">
                 {results.map((match, index) => (
                     <UserProfile key={index} data={match} />
                 ))}
