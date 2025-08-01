@@ -25,8 +25,8 @@ export default function UserProfile({data}: {data: User}) {
             {yourRankExists && <p>You ranked them a { data.yourRank }</p>}
             {theirRankExists && <p>You were ranked a { data.theirRank }</p>}
             {(diff == 0) && <p>Congratulations! You're a match!</p>}
-            {(diff < 0) && <p></p>}
-            {(diff > 0) && <p></p>}
+            {(data.yourRank - data.theirRank < 0) && <p>ur too hot for him</p>}
+            {(data.yourRank - data.theirRank > 0) && <p>womp womp u ugly</p>}
 
             </div>
             

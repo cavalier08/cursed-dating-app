@@ -18,7 +18,7 @@ export default function Matches() {
         name: "Bob",
         username: "bobby",
         yourRank: 6,
-        theirRank: 6,
+        theirRank: 1,
         theirPfP: '/grumpy_lucky.png',
     };
     let users: User[] = [defaultUser];
