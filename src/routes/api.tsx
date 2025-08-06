@@ -23,6 +23,8 @@ export async function postToDjango(endpoint: string, body: {}) {
         body: JSON.stringify(body)
     });
     if (!response.ok) {
+        console.log("response: ", response);
+
         throw new Error("Network response was not ok");
     }
     return response.json();

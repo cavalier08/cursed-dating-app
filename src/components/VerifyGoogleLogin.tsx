@@ -12,29 +12,17 @@ export default function VerifyGoogleLogin() {
         const fetchToken = async () => {
             console.log("hello");
 
-            try {
-                const response = await axios.get('http://localhost:8000/api/get-session', {
-                    withCredentials: true,
-                })
-
-                Cookies.set('token', response.data.token);
-                setUser(response.data);
-            } catch {
-                console.log('session failed');
+            if (Cookies.get('token') == null) {
+                console.log("user not logged in");
                 router.push('/login');
             }
+
+            console.log("user token:", Cookies.get('token'));
+            
         }
         
         fetchToken();
     }, [router])
-
-    /*
-    if (!user) {
-        useEffect(() => {
-            router.push('/login');
-        }, [router])
-    }
-*/
     return (
         <div>
         </div>

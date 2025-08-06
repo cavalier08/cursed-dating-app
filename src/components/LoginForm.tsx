@@ -3,8 +3,9 @@ import '../app/globals.css';
 import TextInput from "@/components/TextInput";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { fetchFromDjango, postToDjango } from "@/routes/api";
+import { fetchFromDjango, postToDjango } from "../routes/api";
 import OAuth from '../components/OAuth';
+import Cookies from 'js-cookie';
 
 interface User {
     name?: string,
@@ -15,6 +16,7 @@ interface User {
 // API body response for /login/ and /signup/ must follow this format!
 export interface LoginResponse {
   success: boolean,
+  token?: string,
   error?: string
 }
 
@@ -45,7 +47,12 @@ export default function LoginForm({signup}: {signup: boolean}) {
         // If successful, redirect user to matches.tsx page
         if (response.success) {
             // Save username to sessionStorage upon successful login
+            if (response.token) {
+                Cookies.set('token', response.token);
+            }
+            console.log("response", response);
             window.sessionStorage.setItem('username', user.username);
+
             Router.push('/matches');
         } else {
             alert(response.error);

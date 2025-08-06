@@ -4,29 +4,23 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 export default function Logout() {
-    const [user, setUser] = useState(null);
     const router = useRouter();
+    const logout_url = process.env.NEXT_LOGOUT_URL || '';
 
-    const getUser = async () => {
+
+
+    const handleClick = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/get-session', {
-                headers: {
-                    withCredentials: true
-                }
+            await axios.get(logout_url, {
+                withCredentials: true,
             })
 
-            setUser(response.data);
+            Cookies.remove('token');
+            router.push('/login');
+
         } catch {
-            console.log("there was an error logging out");
+            console.log("failed to sign out");
         }
-    }
-
-    getUser();
-
-    const handleClick = () => {
-        Cookies.remove('token');
-        setUser(null);
-        router.push('/login');
     }
 
     return (

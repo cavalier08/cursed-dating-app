@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import UserProfile from "@/components/UserProfile";
 import { fetchFromDjango } from "@/routes/api";
 import NavBar from "../components/NavBar"
+import VerifyGoogleLogin from '@/components/VerifyGoogleLogin';
 
 export interface User {
     name: string,
@@ -36,6 +37,7 @@ export default function Matches() {
     return (
         <div>
             <NavBar href1="settings" page1="Settings" href2="swiping" page2="Swiping" title="Matches"/>
+            <VerifyGoogleLogin/>
 
             
             <div className="md:flex w-17/20 bg-slate-800 m-auto mt-20" id="profiles">
