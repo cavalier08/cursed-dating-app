@@ -14,12 +14,20 @@ export default function UserProfile({data}: {data: User}) {
         <div className="p-5 m-auto md:m-3 bg-gray-900 w-100 text-center rounded-xl hover:shadow-md hover:shadow-gray-700">
             <h3 className="text-xl m-4">{ data.name }</h3>
             {data.theirPfP != null && 
-            <Image
-                src={data.theirPfP}
-                alt="pfp of ur future wifey"
-                width={200}
-                height={200}
-                style={pfpStyle}  />}
+                <Image
+                    src={data.theirPfP}
+                    alt="pfp of ur future wifey"
+                    width={200}
+                    height={200}
+                    style={pfpStyle}  />}
+
+            {data.theirPfP == null &&
+                <Image 
+                    src="/grumpy_lucky.png"
+                    alt="pfp of a nobody"
+                    width={200}
+                    height={200} 
+                    style={pfpStyle} />}
 
             <div className="">
             {yourRankExists && <p>You ranked them a { data.yourRank }</p>}

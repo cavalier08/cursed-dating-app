@@ -47,9 +47,7 @@ export default function LoginForm({signup}: {signup: boolean}) {
         // If successful, redirect user to matches.tsx page
         if (response.success) {
             // Save username to sessionStorage upon successful login
-            if (response.token) {
-                Cookies.set('token', response.token);
-            }
+            Cookies.set('token', "hi");
             console.log("response", response);
             window.sessionStorage.setItem('username', user.username);
 
