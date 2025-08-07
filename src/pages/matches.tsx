@@ -20,7 +20,7 @@ export default function Matches() {
         username: "bobby",
         yourRank: 6,
         theirRank: 1,
-        theirPfP: '/grumpy_lucky.png',
+        theirPfP: "/grumpy_lucky.png",
     };
     let users: User[] = [defaultUser];
     const [results, setResults] = useState(users);

@@ -9,17 +9,7 @@ export default function OAuth() {
 
     const handleLogin = async () => {
         window.location.href = googleRedirect;
-        try {
-                const response = await axios.get('http://localhost:8000/api/get-session', {
-                withCredentials: true,
-            })
-            Cookies.set('token', response.data.token);
-            console.log('cookie set');
-            setUser(response.data);
-            
-        } catch {
-            console.log('womp womp');
-        }
+        
     }
 
 

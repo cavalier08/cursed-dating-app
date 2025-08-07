@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { fetchFromDjango, postToDjango } from "@/routes/api";
+import Cookies from 'js-cookie';
 
 interface User {
     name: string,
@@ -41,10 +42,13 @@ export default function SwipeProfile() {
     // Event handler for SwipeButtons
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
         const body = {
-            thisUsername: window.sessionStorage["username"],
+            //thisUsername: window.sessionStorage["username"],
+            thisUsername: Cookies.get('name'),
             otherUsername: user.username,
             rating: parseInt(event.currentTarget.value)
+            
         }
+
         console.log(body);
         // Send POST request containing ranking to API
         postToDjango('rank', body);
@@ -77,6 +81,13 @@ export default function SwipeProfile() {
                         width={200}
                         height={200}
                         style={pfpStyle} />}
+                    {!user.pfpURL && <Image 
+                        src = "/grumpy_lucky.png"
+                        alt = "lol"
+                        width = {200}
+                        height = {200}
+                        style = {pfpStyle}
+                        />}
                     
                     <div className="flex wrap w-20/20 m-auto">
                         <SwipeButton rating={1} />
